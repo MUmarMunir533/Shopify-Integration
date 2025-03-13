@@ -15,26 +15,37 @@ const ProductItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleQuickViewUpdate = () => {
-    dispatch(updateQuickView({ ...item }));
-  };
-
-  const handleAddToCart = () => {
-    dispatch(addItemToCart({ ...item, quantity: 1 }));
-  };
-
-  const handleItemToWishList = () => {
-    dispatch(addItemToWishlist({ ...item, status: "available", quantity: 1 }));
-  };
-
-  const handleProductDetails = () => {
-    dispatch(updateproductDetails({ ...item }));
-  };
-
+  // Compute imageSrc using available data or fallback.
   const imageSrc =
     (item as Product & { image?: string }).image ||
     item.imgs?.previews?.[0] ||
     "/images/default-product.png";
+
+  // Create productImages object to satisfy the expected type.
+  const productImages = { thumbnails: [imageSrc], previews: [imageSrc] };
+
+  const handleQuickViewUpdate = () => {
+    dispatch(updateQuickView({ ...item, imgs: productImages }));
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({ ...item, imgs: productImages, quantity: 1 }));
+  };
+
+  const handleItemToWishList = () => {
+    dispatch(
+      addItemToWishlist({
+        ...item,
+        imgs: productImages,
+        status: "available",
+        quantity: 1,
+      })
+    );
+  };
+
+  const handleProductDetails = () => {
+    dispatch(updateproductDetails({ ...item, imgs: productImages }));
+  };
 
   return (
     <div className="group">
@@ -79,13 +90,13 @@ const ProductItem = ({ item }: { item: Product }) => {
               </svg>
             </button>
             <button
-              onClick={() => handleAddToCart()}
+              onClick={handleAddToCart}
               className="inline-flex font-medium text-custom-sm py-[7px] px-5 rounded-[5px] bg-blue text-white ease-out duration-200 hover:bg-blue-dark"
             >
               Add to cart
             </button>
             <button
-              onClick={() => handleItemToWishList()}
+              onClick={handleItemToWishList}
               aria-label="button for favorite select"
               id="favOne"
               className="flex items-center justify-center w-9 h-9 rounded-[5px] shadow-1 ease-out duration-200 text-dark bg-white hover:text-blue"

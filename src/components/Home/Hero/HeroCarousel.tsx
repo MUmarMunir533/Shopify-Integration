@@ -3,12 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
 // Import Swiper styles
-import "swiper/css/pagination";
 import "swiper/css";
+import "swiper/css/pagination";
 
 import Image from "next/image";
 
-const HeroCarousal = () => {
+const HeroCarousel = () => {
+  // Define static image paths
+  const slide1Src = "/images/hero/hero-01.png";
+  const slide2Src = "/images/hero/hero-01.png";
+
   return (
     <Swiper
       spaceBetween={30}
@@ -21,16 +25,18 @@ const HeroCarousal = () => {
         clickable: true,
       }}
       modules={[Autoplay, Pagination]}
-      className="hero-carousel"
+      className="hero-carousel w-full"
     >
+      {/* Slide 1 */}
       <SwiperSlide>
-        <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
-          <div className="max-w-[394px] py-10 sm:py-15 lg:py-24.5 pl-4 sm:pl-7.5 lg:pl-12.5">
-            <div className="flex items-center gap-4 mb-7.5 sm:mb-10">
-              <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
+        <div className="w-full flex flex-col-reverse sm:flex-row items-center justify-between py-6 sm:py-0">
+          {/* Text Section */}
+          <div className="w-full sm:w-1/2 px-4 sm:px-8 lg:px-12 py-4 sm:py-8">
+            <div className="flex items-center gap-4 mb-6 sm:mb-8">
+              <span className="block font-semibold text-2xl sm:text-4xl text-blue">
                 30%
               </span>
-              <span className="block text-dark text-sm sm:text-custom-1 sm:leading-[24px]">
+              <span className="block text-dark text-base sm:text-lg">
                 Sale
                 <br />
                 Off
@@ -41,37 +47,44 @@ const HeroCarousal = () => {
               <a href="#">True Wireless Noise Cancelling Headphone</a>
             </h1>
 
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ipsum at risus euismod lobortis in
+            <p className="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
+              ipsum at risus euismod lobortis in.
             </p>
 
             <a
               href="#"
-              className="inline-flex font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue mt-10"
+              className="inline-flex font-medium text-white text-base rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue"
             >
               Shop Now
             </a>
           </div>
 
-          <div>
-            <Image
-              src="/images/hero/hero-01.png"
-              alt="headphone"
-              width={351}
-              height={358}
-            />
+          {/* Image Section */}
+          <div className="w-full sm:w-1/2 flex justify-center">
+            {slide1Src && (
+              <Image
+                src={slide1Src}
+                alt="headphone"
+                width={351}
+                height={358}
+                className="object-contain"
+              />
+            )}
           </div>
         </div>
       </SwiperSlide>
+
+      {/* Slide 2 */}
       <SwiperSlide>
-        {" "}
-        <div className="flex items-center pt-6 sm:pt-0 flex-col-reverse sm:flex-row">
-          <div className="max-w-[394px] py-10 sm:py-15 lg:py-26 pl-4 sm:pl-7.5 lg:pl-12.5">
-            <div className="flex items-center gap-4 mb-7.5 sm:mb-10">
-              <span className="block font-semibold text-heading-3 sm:text-heading-1 text-blue">
+        <div className="w-full flex flex-col-reverse sm:flex-row items-center justify-between py-6 sm:py-0">
+          {/* Text Section */}
+          <div className="w-full sm:w-1/2 px-4 sm:px-8 lg:px-12 py-4 sm:py-8">
+            <div className="flex items-center gap-4 mb-6 sm:mb-8">
+              <span className="block font-semibold text-2xl sm:text-4xl text-blue">
                 30%
               </span>
-              <span className="block text-dark text-sm sm:text-custom-1 sm:leading-[24px]">
+              <span className="block text-dark text-base sm:text-lg">
                 Sale
                 <br />
                 Off
@@ -79,29 +92,33 @@ const HeroCarousal = () => {
             </div>
 
             <h1 className="font-semibold text-dark text-xl sm:text-3xl mb-3">
-              <a href="#">True Wireless Noise Cancelling Headphone</a>
+              <a href="#">True Wireless Noise Cancelling Smart Watch</a>
             </h1>
 
-            <p>
+            <p className="mb-4">
               Lorem ipsum dolor sit, consectetur elit nunc suscipit non ipsum
               nec suscipit.
             </p>
 
             <a
               href="#"
-              className="inline-flex font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue mt-10"
+              className="inline-flex font-medium text-white text-base rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue"
             >
               Shop Now
             </a>
           </div>
 
-          <div>
-            <Image
-              src="/images/hero/hero-01.png"
-              alt="headphone"
-              width={351}
-              height={358}
-            />
+          {/* Image Section */}
+          <div className="w-full sm:w-1/2 flex justify-center">
+            {slide2Src && (
+              <Image
+                src={slide2Src}
+                alt="headphone"
+                width={351}
+                height={270}
+                className="object-contain"
+              />
+            )}
           </div>
         </div>
       </SwiperSlide>
@@ -109,4 +126,4 @@ const HeroCarousal = () => {
   );
 };
 
-export default HeroCarousal;
+export default HeroCarousel;
