@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const SingleItem = ({ item, removeItemFromCart }) => {
   const dispatch = useDispatch<AppDispatch>();
-  console.log(item);
   const handleRemoveFromCart = () => {
     dispatch(removeItemFromCart(item.id));
   };
