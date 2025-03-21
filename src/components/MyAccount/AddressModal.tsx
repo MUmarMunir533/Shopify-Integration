@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 
 const AddressModal = ({ isOpen, closeModal }) => {
   useEffect(() => {
-    // closing modal while clicking outside
     function handleClickOutside(event) {
       if (!event.target.closest(".modal-content")) {
         closeModal();

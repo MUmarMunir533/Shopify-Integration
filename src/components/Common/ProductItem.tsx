@@ -15,13 +15,11 @@ const ProductItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
-  // Compute imageSrc using available data or fallback.
   const imageSrc =
     (item as Product & { image?: string }).image ||
     item.imgs?.previews?.[0] ||
     "/images/default-product.png";
 
-  // Create productImages object to satisfy the expected type.
   const productImages = { thumbnails: [imageSrc], previews: [imageSrc] };
 
   const handleQuickViewUpdate = () => {
@@ -49,7 +47,6 @@ const ProductItem = ({ item }: { item: Product }) => {
 
   return (
     <div className="group">
-      {/* Image Container */}
       <div className="relative overflow-hidden rounded-lg bg-[#F6F7FB] mb-4 shadow-md">
         <div className="relative w-full h-48 md:h-56">
           <Image
@@ -58,7 +55,6 @@ const ProductItem = ({ item }: { item: Product }) => {
             fill
             className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           />
-          {/* Overlay for buttons */}
           <div className="absolute inset-0 flex items-end justify-center gap-2.5 pb-5 translate-y-full transition-transform duration-300 ease-linear group-hover:translate-y-0">
             <button
               onClick={() => {
@@ -120,7 +116,6 @@ const ProductItem = ({ item }: { item: Product }) => {
         </div>
       </div>
 
-      {/* Product Details */}
       <div className="flex flex-col items-start gap-2">
         <div className="flex items-center gap-1">
           <Image

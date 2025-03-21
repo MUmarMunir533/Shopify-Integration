@@ -1,4 +1,3 @@
-// lib/shopifyClient.ts
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import fetch from "cross-fetch";
 
@@ -12,7 +11,6 @@ if (!shopifyAccessToken) {
   throw new Error("Missing SHOPIFY_ACCESS_TOKEN in environment variables");
 }
 
-// Construct the full API URL safely
 const SHOPIFY_API_URL: string = shopifyDomainName.startsWith("http")
   ? `${shopifyDomainName}/api/2023-01/graphql.json`
   : `https://${shopifyDomainName}/api/2023-01/graphql.json`;
@@ -20,7 +18,7 @@ const SHOPIFY_API_URL: string = shopifyDomainName.startsWith("http")
 const client = new ApolloClient({
   link: new HttpLink({
     uri: SHOPIFY_API_URL,
-    fetch, // cross-fetch is compatible
+    fetch,
     headers: {
       "X-Shopify-Storefront-Access-Token": shopifyAccessToken,
       "Content-Type": "application/json",

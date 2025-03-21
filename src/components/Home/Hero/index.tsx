@@ -6,10 +6,8 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section className="overflow-hidden bg-[#E5EAF4] pt-32 sm:pt-36 lg:pt-40 xl:pt-44 pb-10 sm:pb-12 lg:pb-14 xl:pb-16">
-      {/* Carousel: Centered with extra margins */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
         <div className="relative z-10 rounded-lg bg-white overflow-hidden mt-8">
-          {/* Background shapes */}
           <Image
             src="/images/hero/hero-bg.png"
             alt="hero bg shapes"
@@ -20,7 +18,6 @@ const Hero = () => {
           <HeroCarousel />
         </div>
       </div>
-      {/* Hero Features */}
       <HeroFeature />
     </section>
   );

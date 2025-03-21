@@ -12,11 +12,9 @@ const Cart = () => {
 
   return (
     <>
-      {/* <!-- ===== Breadcrumb Section Start ===== --> */}
       <section>
         <Breadcrumb title={"Cart"} pages={["Cart"]} />
       </section>
-      {/* <!-- ===== Breadcrumb Section End ===== --> */}
       {cartItems.length > 0 ? (
         <section className="overflow-hidden py-20 bg-gray-2">
           <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
@@ -28,7 +26,6 @@ const Cart = () => {
             <div className="bg-white rounded-[10px] shadow-1">
               <div className="w-full overflow-x-auto">
                 <div className="min-w-[1170px]">
-                  {/* <!-- table header --> */}
                   <div className="flex items-center py-5.5 px-7.5">
                     <div className="min-w-[400px]">
                       <p className="text-dark">Product</p>
@@ -51,7 +48,6 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  {/* <!-- cart item --> */}
                   {cartItems.length > 0 &&
                     cartItems.map((item, key) => (
                       <SingleItem item={item} key={key} />

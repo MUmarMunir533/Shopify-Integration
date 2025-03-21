@@ -37,7 +37,6 @@ const Dropdown = ({ menuItem, stickyMenu }) => {
         </svg>
       </a>
 
-      {/* <!-- Dropdown Start --> */}
       <ul
         className={`dropdown ${dropdownToggler && "flex"} ${
           stickyMenu

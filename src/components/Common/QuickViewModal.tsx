@@ -14,23 +14,19 @@ const QuickViewModal = () => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch<AppDispatch>();
 
-  // Get product data from Redux
   const product = useAppSelector((state) => state.quickViewReducer.value);
   const [activePreview, setActivePreview] = useState(0);
 
-  // Fallback image logic
   const imageSrc =
     (product as { image?: string })?.image ||
     product?.imgs?.previews?.[activePreview] ||
     "/images/default-product.png";
 
-  // Open preview slider
   const handlePreviewSlider = () => {
     dispatch(updateproductDetails(product));
     openPreviewModal();
   };
 
-  // Add product to cart
   const handleAddToCart = () => {
     dispatch(
       addItemToCart({
@@ -63,9 +59,7 @@ const QuickViewModal = () => {
         isModalOpen ? "flex" : "hidden"
       } fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4`}
     >
-      {/* Modal container with top margin and centered content */}
       <div className="modal-content relative bg-white rounded-xl shadow-2xl w-full max-w-3xl mt-12 max-h-[90vh] overflow-auto transform transition-all duration-300">
-        {/* Close Button */}
         <button
           onClick={closeModal}
           aria-label="Close Modal"
@@ -87,7 +81,6 @@ const QuickViewModal = () => {
           </svg>
         </button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-          {/* Left Column - Images */}
           <div className="flex flex-col items-center">
             <div className="flex flex-col sm:flex-row gap-3 w-full">
               <div className="flex flex-row sm:flex-col gap-2">
@@ -131,7 +124,6 @@ const QuickViewModal = () => {
                     />
                   </svg>
                 </button>
-                {/* Fixed size image */}
                 <Image
                   src={imageSrc}
                   alt="Product Image"
@@ -142,7 +134,6 @@ const QuickViewModal = () => {
               </div>
             </div>
           </div>
-          {/* Right Column - Product Details */}
           <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left space-y-4">
             <span className="inline-block text-xs font-medium text-white bg-green-500 px-3 py-1 rounded-full">
               SALE 20% OFF
@@ -231,7 +222,6 @@ const QuickViewModal = () => {
             </div>
           </div>
         </div>
-        {/* Green Add to Cart Button */}
         <div className="px-4 pb-4 pt-2">
           <button
             onClick={handleAddToCart}

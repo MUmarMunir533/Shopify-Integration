@@ -9,20 +9,18 @@ import { selectTotalPrice } from "@/redux/features/cart-slice";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 import Image from "next/image";
 import { FaUser, FaShoppingCart, FaPhoneAlt, FaBars } from "react-icons/fa";
-import client, { header as headerQuery } from "@/lib/contentful"; // Adjust the import path if needed
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
-  const [logoData, setLogoData] = useState({
+
+  const logoData = {
     logo: "Logo",
     imageUrl: "/images/logo/logo.svg",
-  });
-  const [error, setError] = useState("");
+  };
 
   const { openCartModal } = useCartModalContext();
-
   const product = useAppSelector((state) => state.cartReducer.items);
   const totalPrice = useSelector(selectTotalPrice);
 
@@ -39,34 +37,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleStickyMenu);
   }, []);
 
-  // Fetch header (logo) data from Contentful
-  useEffect(() => {
-    client
-      .query({ query: headerQuery })
-      .then((response) => {
-        const headerItem = response.data?.headerCollection?.items?.[0];
-        if (headerItem && headerItem.logo && headerItem.image?.url) {
-          setLogoData({
-            logo: headerItem.logo,
-            imageUrl: headerItem.image.url,
-          });
-          setError(""); // Clear any previous error
-        } else {
-          setError("Contentful logo data not available.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching header data:", error);
-        setError("Error fetching header data.");
-      });
-  }, []);
-
   return (
     <>
-      {/* Display error message if exists */}
-      {error && (
-        <div className="bg-red-600 text-white text-center py-2">{error}</div>
-      )}
       <header
         className={`fixed left-0 top-0 w-full z-9999 bg-white transition-all ease-in-out duration-300 ${
           stickyMenu && "shadow"
@@ -87,7 +59,6 @@ const Header = () => {
                   height={36}
                 />
               </Link>
-
               <div className="max-w-[475px] w-full">
                 <form>
                   <div className="relative max-w-[333px] sm:min-w-[333px] w-full">

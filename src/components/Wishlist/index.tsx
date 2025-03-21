@@ -20,7 +20,6 @@ export const Wishlist = () => {
           <div className="bg-white rounded-[10px] shadow-1">
             <div className="w-full overflow-x-auto">
               <div className="min-w-[1170px]">
-                {/* <!-- table header --> */}
                 <div className="flex items-center py-5.5 px-10">
                   <div className="min-w-[83px]"></div>
                   <div className="min-w-[387px]">
@@ -40,7 +39,6 @@ export const Wishlist = () => {
                   </div>
                 </div>
 
-                {/* <!-- wish item --> */}
                 {wishlistItems.map((item, key) => (
                   <SingleItem item={item} key={key} />
                 ))}

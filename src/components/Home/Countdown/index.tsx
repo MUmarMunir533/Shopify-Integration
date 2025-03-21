@@ -41,13 +41,11 @@ const CounDown = () => {
 
             <p>The Havit H206d is a wired PC headphone.</p>
 
-            {/* <!-- Countdown timer --> */}
             <div
               className="flex flex-wrap gap-6 mt-6"
               x-data="timer()"
               x-init="countdown()"
             >
-              {/* <!-- timer day --> */}
               <div>
                 <span
                   className="min-w-[64px] h-14.5 font-semibold text-xl lg:text-3xl text-dark rounded-lg flex items-center justify-center bg-white shadow-2 px-4 mb-2"
@@ -61,7 +59,6 @@ const CounDown = () => {
                 </span>
               </div>
 
-              {/* <!-- timer hours --> */}
               <div>
                 <span
                   className="min-w-[64px] h-14.5 font-semibold text-xl lg:text-3xl text-dark rounded-lg flex items-center justify-center bg-white shadow-2 px-4 mb-2"
@@ -75,7 +72,6 @@ const CounDown = () => {
                 </span>
               </div>
 
-              {/* <!-- timer minutes --> */}
               <div>
                 <span
                   className="min-w-[64px] h-14.5 font-semibold text-xl lg:text-3xl text-dark rounded-lg flex items-center justify-center bg-white shadow-2 px-4 mb-2"
@@ -88,7 +84,6 @@ const CounDown = () => {
                 </span>
               </div>
 
-              {/* <!-- timer seconds --> */}
               <div>
                 <span
                   className="min-w-[64px] h-14.5 font-semibold text-xl lg:text-3xl text-dark rounded-lg flex items-center justify-center bg-white shadow-2 px-4 mb-2"
@@ -101,7 +96,7 @@ const CounDown = () => {
                 </span>
               </div>
             </div>
-            {/* <!-- Countdown timer ends --> */}
+
 
             <a
               href="#"
@@ -111,7 +106,6 @@ const CounDown = () => {
             </a>
           </div>
 
-          {/* <!-- bg shapes --> */}
           <Image
             src="/images/countdown/countdown-bg.png"
             alt="bg shapes"

@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { FaThLarge, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css";
 
@@ -51,7 +50,6 @@ const Categories = () => {
     }
   }, []);
 
-  // Fetch collections from Shopify
   useEffect(() => {
     const fetchCollections = async () => {
       try {

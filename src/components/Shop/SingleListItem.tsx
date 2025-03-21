@@ -15,12 +15,10 @@ const SingleListItem = ({ item }: { item: Product }) => {
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
 
-  // update the QuickView state
   const handleQuickViewUpdate = () => {
     dispatch(updateQuickView({ ...item }));
   };
 
-  // add to cart
   const handleAddToCart = () => {
     dispatch(
       addItemToCart({

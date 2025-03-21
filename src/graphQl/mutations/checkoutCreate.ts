@@ -1,4 +1,3 @@
-// graphQl/mutations/checkoutCreate.ts
 import { gql } from "@apollo/client";
 
 export const CHECKOUT_CREATE_MUTATION = gql`

@@ -1,4 +1,3 @@
-// app/api/products/route.ts
 import { NextResponse } from "next/server";
 import axios from "axios";
 
@@ -16,7 +15,6 @@ const SHOPIFY_API_URL: string = shopifyDomainName.startsWith("http")
   ? `${shopifyDomainName}/api/2023-01/graphql.json`
   : `https://${shopifyDomainName}/api/2023-01/graphql.json`;
 
-// Original query for fetching products without filtering
 const GET_PRODUCTS_QUERY = `
   query {
     products(first: 10) {
@@ -50,7 +48,6 @@ const GET_PRODUCTS_QUERY = `
   }
 `;
 
-// Query for fetching products by collection id (passed as variable $id)
 const GET_PRODUCTS_BY_COLLECTION_QUERY = `
   query ($id: ID!) {
     node(id: $id) {
@@ -95,7 +92,6 @@ export async function GET(request: Request) {
   try {
     let response;
     if (category) {
-      // Fetch products for a specific collection using its id
       response = await axios.post(
         SHOPIFY_API_URL,
         {
@@ -109,11 +105,9 @@ export async function GET(request: Request) {
           },
         }
       );
-      // Extract products from the collection node
       const products = response.data.data.node.products.edges;
       return NextResponse.json(products, { status: 200 });
     } else {
-      // Use original functionality when no category filter is provided
       response = await axios.post(
         SHOPIFY_API_URL,
         { query: GET_PRODUCTS_QUERY },

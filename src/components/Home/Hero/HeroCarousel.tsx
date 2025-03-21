@@ -40,7 +40,6 @@ const HeroCarousel = () => {
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <div className="w-full flex flex-col-reverse sm:flex-row items-center justify-between py-6 sm:py-0">
-            {/* Text Section */}
             <div className="w-full sm:w-1/2 px-4 sm:px-8 lg:px-12 py-4 sm:py-8">
               <div className="flex items-center gap-4 mb-6 sm:mb-8">
                 <span className="block font-semibold text-2xl sm:text-4xl text-blue">
@@ -67,7 +66,6 @@ const HeroCarousel = () => {
               </a>
             </div>
 
-            {/* Image Section */}
             <div className="w-full sm:w-1/2 flex justify-center">
               {slide.image?.url && (
                 <Image

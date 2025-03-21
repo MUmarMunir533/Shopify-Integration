@@ -53,20 +53,19 @@ const NewArrival = () => {
         }
         const data: ProductEdge[] = await res.json();
 
-        // Transform the fetched data into the expected Product type.
         const formattedProducts: Product[] = data.map((edge: ProductEdge) => {
           const numericId = Number(edge.node.id.match(/\d+/)?.[0] || 0);
           const variant = edge.node.variants.edges[0]?.node;
           return {
             id: numericId,
             title: edge.node.title,
-            description: edge.node.descriptionHtml, // Map descriptionHtml to description
-            image: edge.node.images.edges[0]?.node.src || "", // Use first image's src or fallback to an empty string
-            reviews: 0, // Default reviews value
-            price: Number(variant?.priceV2.amount || 0), // Convert price to number
+            description: edge.node.descriptionHtml,
+            image: edge.node.images.edges[0]?.node.src || "",
+            reviews: 0, 
+            price: Number(variant?.priceV2.amount || 0), 
             discountedPrice: Number(
               variant?.compareAtPriceV2?.amount || variant?.priceV2.amount || 0
-            ), // Use compareAtPrice if available, else fallback to price
+            ), 
           };
         });
 
@@ -107,7 +106,6 @@ const NewArrival = () => {
   return (
     <section className="overflow-hidden pt-15">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
-        {/* Section title */}
         <div className="mb-7 flex items-center justify-between">
           <div>
             <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">

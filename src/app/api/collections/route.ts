@@ -1,4 +1,3 @@
-// app/api/collections/route.ts
 import { NextResponse } from "next/server";
 import axios from "axios";
 
@@ -74,7 +73,6 @@ export async function GET() {
       }
     );
 
-    // Flatten the response to return an array of collection objects
     const rawCollections = response.data.data.collections.edges;
     const collections = rawCollections.map((edge: any) => ({
       id: edge.node.id,

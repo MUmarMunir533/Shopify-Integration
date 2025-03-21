@@ -1,4 +1,3 @@
-// components/common/CartSidebarModal.tsx
 "use client";
 import React, { useEffect } from "react";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";

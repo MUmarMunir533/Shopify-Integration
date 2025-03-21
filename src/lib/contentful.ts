@@ -15,7 +15,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// GraphQL Query to Fetch Carousel Data (existing functionality)
 export const hero = gql`
   query {
     heroCollection {
@@ -30,7 +29,6 @@ export const hero = gql`
   }
 `;
 
-// New GraphQL Query to Fetch Header Data (Logo)
 export const header = gql`
   query {
     headerCollection {

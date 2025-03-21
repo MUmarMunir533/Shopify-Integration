@@ -61,7 +61,6 @@ const ShopWithSidebar = () => {
     }
   }, [productSidebar]);
 
-  // Fetch collections from Shopify
   useEffect(() => {
     const fetchCollections = async () => {
       try {
@@ -79,7 +78,6 @@ const ShopWithSidebar = () => {
     fetchCollections();
   }, []);
 
-  // Fetch products based on selected collection (category)
   useEffect(() => {
     const fetchProducts = async (category: string | null = null) => {
       setLoading(true);
@@ -91,7 +89,6 @@ const ShopWithSidebar = () => {
         }
         const data = await res.json();
 
-        // Transform fetched data to the expected Product type
         const formattedProducts: Product[] = data.map((edge: any) => {
           const numericId = Number(edge.node.id.match(/\d+/)?.[0] || 0);
           const variant = edge.node.variants.edges[0]?.node;
@@ -100,7 +97,7 @@ const ShopWithSidebar = () => {
             title: edge.node.title,
             description: edge.node.descriptionHtml,
             image: edge.node.images.edges[0]?.node.src || "",
-            reviews: 0, // Default reviews value; update if you add reviews
+            reviews: 0, 
             price: Number(variant?.priceV2.amount || 0),
             discountedPrice: Number(
               variant?.compareAtPriceV2?.amount || variant?.priceV2.amount || 0
@@ -109,7 +106,7 @@ const ShopWithSidebar = () => {
         });
 
         setProducts(formattedProducts);
-        setCurrentPage(1); // Reset to first page on category change
+        setCurrentPage(1); 
       } catch (err: any) {
         setError(err.message || "Something went wrong");
       } finally {
@@ -143,7 +140,6 @@ const ShopWithSidebar = () => {
 
   if (error) return <div>Error: {error}</div>;
 
-  // Pagination Logic
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
@@ -166,14 +162,14 @@ const ShopWithSidebar = () => {
       <section className="relative pb-20 pt-5 lg:pt-20 xl:pt-28 bg-[#f3f4f6] overflow-hidden">
         <div className="max-w-[1170px] mx-auto w-full px-4 sm:px-8 xl:px-0">
           <div className="flex flex-col lg:flex-row gap-7.5">
-            {/* Sidebar */}
+
             <div className="w-full lg:w-1/4">
               <div className="shadow-xl rounded-lg p-6 h-[600px] overflow-y-auto sidebar-content">
                 <h3 className="text-xl font-bold mb-6 border-b pb-3">
                   Categories
                 </h3>
                 <ul className="space-y-3">
-                  {/* Option to reset filter */}
+
                   <li>
                     <button
                       onClick={() => setSelectedCategory(null)}
@@ -236,7 +232,6 @@ const ShopWithSidebar = () => {
               </div>
             </div>
 
-            {/* Main Content */}
             <div className="flex-1">
               <div className="rounded-lg bg-blue-dark text-white shadow-md flex items-center justify-between px-4 py-3 mb-6">
                 <p>
@@ -272,7 +267,6 @@ const ShopWithSidebar = () => {
                 </div>
               </div>
 
-              {/* Products */}
               <div
                 className={`grid gap-5 ${
                   productStyle === "grid"
@@ -285,7 +279,6 @@ const ShopWithSidebar = () => {
                 ))}
               </div>
 
-              {/* Pagination */}
               {totalPages > 1 && (
                 <div className="flex justify-center mt-10">
                   <div className="bg-blue-dark text-white shadow-md rounded-md p-3 flex space-x-2">
