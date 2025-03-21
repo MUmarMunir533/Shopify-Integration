@@ -51,7 +51,7 @@ const ProductItem = ({ item }: { item: Product }) => {
     <div className="group">
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-lg bg-[#F6F7FB] mb-4 shadow-md">
-        <div className="relative w-full h-64 md:h-80">
+        <div className="relative w-full h-48 md:h-56">
           <Image
             src={imageSrc}
             alt={item.title}
@@ -159,7 +159,7 @@ const ProductItem = ({ item }: { item: Product }) => {
         className="font-medium text-dark transition-colors hover:text-blue mb-1.5"
         onClick={handleProductDetails}
       >
-        <Link href="/shop-details">{item.title}</Link>
+        <Link href="/shop-with-sidebar">{item.title}</Link>
       </h3>
       <span className="flex items-center gap-2 font-medium text-lg">
         <span className="text-dark">${item.discountedPrice}</span>

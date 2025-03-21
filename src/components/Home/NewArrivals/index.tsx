@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ProductItem from "@/components/Common/ProductItem";
-import { Product } from "@/types/product"; // Expected type: { id: number; title: string; description: string; image: string; reviews: number; price: number; discountedPrice: number; }
+import { Product } from "@/types/product";
 
 interface ProductImageEdge {
   node: {
@@ -139,14 +139,14 @@ const NewArrival = () => {
 
           <Link
             href="/shop-with-sidebar"
-            className="inline-flex font-medium text-custom-sm py-2.5 px-7 rounded-md border-gray-3 border bg-gray-1 text-dark ease-out duration-200 hover:bg-dark hover:text-white hover:border-transparent"
+            className="inline-flex font-medium text-custom-sm py-2.5 px-7 rounded-md border-gray-3 border bg-gray-1 text-dark ease-out duration-200 hover:bg-blue-dark hover:text-white hover:border-transparent"
           >
             View All
           </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7.5 gap-y-9">
-          {products.map((product) => (
+          {products.slice(0, 8).map((product) => (
             <ProductItem item={product} key={product.id} />
           ))}
         </div>
